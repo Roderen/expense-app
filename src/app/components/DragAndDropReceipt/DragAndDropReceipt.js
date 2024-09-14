@@ -14,7 +14,7 @@ const DragAndDrop = () => {
         formData.append('file', image);
 
 
-    }, []);
+    }, [image]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 

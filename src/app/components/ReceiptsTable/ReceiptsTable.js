@@ -104,7 +104,7 @@ const ReceiptsTable = memo(() => {
             title: 'Category',
             dataIndex: 'category',
             key: 'category',
-            width: 400,
+            width: 300,
             ellipsis: true,
         },
         {
@@ -118,7 +118,7 @@ const ReceiptsTable = memo(() => {
             title: 'Date',
             dataIndex: 'date',
             key: 'date',
-            width: 300,
+            width: 200,
             render: (text) => dayjs(text, 'DD-MM-YY').format('DD-MM-YY'),
             sorter: (a, b) => new Date(a.date) - new Date(b.date),
             filterDropdown: ({
@@ -163,7 +163,8 @@ const ReceiptsTable = memo(() => {
             key: 'view',
             render: (_, record) => {
                 return <Button onClick={() => showViewModal(record.id)}>View</Button>;
-            }
+            },
+            align: 'right',
         },
         {
             title: '',
@@ -173,7 +174,8 @@ const ReceiptsTable = memo(() => {
                 return <Button onClick={async () => {
                     await deleteTableItem(record.id)
                 }}>Delete</Button>;
-            }
+            },
+            align: 'right',
         },
     ];
 
@@ -217,6 +219,7 @@ const ReceiptsTable = memo(() => {
                         dataSource={filteredData}
                         columns={columns}
                         rowKey="id"
+                        scroll={{ x: "max-content" }}
                     />
                 </div>
             </div>

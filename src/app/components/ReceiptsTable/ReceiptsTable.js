@@ -95,6 +95,7 @@ const ReceiptsTable = memo(() => {
                 (filterMonth ? date.month() === filterMonth - 1 : true);
         });
     };
+    
 
     const filteredData = filterData(receiptsData);
 
@@ -119,6 +120,7 @@ const ReceiptsTable = memo(() => {
             key: 'date',
             width: 300,
             render: (text) => dayjs(text, 'DD-MM-YY').format('DD-MM-YY'),
+            sorter: (a, b) => new Date(a.date) - new Date(b.date),
             filterDropdown: ({
                                  clearFilters,
                              }) => (

@@ -25,7 +25,7 @@ const ReceiptsTable = memo(() => {
     const [selectedReceiptId, setSelectedReceiptId] = useState(null);
 
     const [filterYear, setFilterYear] = useState(null);
-    const [filterMonth, setFilterMonth] = useState(null);
+    const [filterMonth, setFilterMonth] = useState(dayjs().month() + 1);
 
     const showModal = useCallback(() => {
         setIsAddReceiptModalOpen(true);
@@ -135,11 +135,11 @@ const ReceiptsTable = memo(() => {
                             .map(year => <Select.Option key={year} value={year}>{year}</Select.Option>)}
                     </Select>
                     <Select
-                        defaultValue=""
+                        defaultValue={filterMonth}
                         style={{width: 120}}
                         onChange={(value) => setFilterMonth(value)}
                     >
-                        <Select.Option value="">Select Month</Select.Option>
+                        <Select.Option value="">All</Select.Option>
                         {Array.from({length: 12}, (_, i) => i + 1)
                             .map(month => <Select.Option key={month}
                                                          value={month}>{dayjs().month(month - 1).format('MMMM')}</Select.Option>)}

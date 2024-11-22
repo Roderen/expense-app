@@ -162,7 +162,9 @@ const ReceiptsTable = memo(() => {
             dataIndex: 'view',
             key: 'view',
             render: (_, record) => {
-                return <Button onClick={() => showViewModal(record.id)}>View</Button>;
+                if (record.inputRecipeList.length) {
+                    return <Button onClick={() => showViewModal(record.id)}>View</Button>;
+                }
             },
             align: 'right',
         },
